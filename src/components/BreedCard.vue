@@ -1,6 +1,13 @@
 <template>
+    <div class="breedCard">
+        <img :src="dogImage"  v-if="!imageLoad"/>
 
-    <div class="h-auto w-auto">
+        <div class="lazy-loader" v-if="imageLoad">
+
+        </div>
+    </div>
+
+    <!-- <div class="h-auto w-auto">
 <RouterLink :to="('breed/' + breed)">
 
 
@@ -21,7 +28,7 @@
 
 </RouterLink>
 
-    </div>
+    </div> -->
  
 </template>
 
@@ -70,11 +77,21 @@ router.push({name:'breed-name',params:breed})
 .details{
     display: flex;
 }
-
-.lazy-container {
+img{
     border-radius: 12px;
-    height: 30rem;
-    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+}
+
+.breedCard{
+    flex: 1 1 25%;
+}
+
+.lazy-loader {
+    border-radius: 12px;
+    height: 300px;
+    width: 300px;
     background: linear-gradient(90deg, #929292 20%, #ffffff);
     background-size: 300%;
     animation: loader 1s linear 2s infinite alternate;
