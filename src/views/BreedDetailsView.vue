@@ -10,8 +10,9 @@
         </div>
         <h1 class="py-6 text-5xl underline">{{ route.params.name }}</h1>
 
-        <div class="flex gap-2">
-            <ImageCard v-for="breedImage in breedImages" :breedImage="breedImage" />
+        <div class="flex gap-2 ">
+            <ImageCard v-for="breedImage in breedImages" :breedImage="breedImage" :imageLoad="imageLoad"/>
+            
         </div>
         
         </div>
@@ -29,18 +30,42 @@ import Loading from '@/components/Loading.vue';
 const route = useRoute();
 const router = useRouter();
 
-const loading = ref<boolean>(true)
+const loading = ref<boolean>(false)
 const breedImages= ref<string[]>([])
+    const imageLoad = ref<boolean>(true)
 
 onMounted(async() => {
     const response = await axios.get(`https://dog.ceo/api/breed/${route.params.name}/images/random/5`)
     console.log(response.data.message)
-    loading.value = false
+    imageLoad.value = false
     breedImages.value = response.data.message
 })
 
 </script>
 
 <style scoped>
-
+.lazy-loader {
+    border-radius: 12px;
+    height: 300px;
+    width: 300px;
+    background: linear-gradient(90deg, #929292 20%, #ffffff);
+    background-size: 300%;
+    animation: loader 1s linear 2s infinite alternate;
+  }
+  .lazy-container-info {
+    border-radius: 12px;
+    height: 20px;
+    width: 250px;
+    background: linear-gradient(90deg, black 20%, #ffffff);
+    background-size: 300%;
+    animation: loader 1s linear 2s infinite alternate;
+  }
+  @keyframes loader {
+    0% {
+      background-position: 300% 0%;
+    }
+    100% {
+      background-position: 350% 0%;
+    }
+  }
 </style>

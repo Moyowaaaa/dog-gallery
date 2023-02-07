@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted,ref,computed } from 'vue';
+import { onMounted,ref,computed,watchEffect } from 'vue';
 import axios from 'axios'
 import BreedCard from '@/components/BreedCard.vue'
 import Loading from '../components/Loading.vue'
@@ -7,21 +7,37 @@ import Search from '@/components/Search.vue';
 import store from '@/store';
 import Vuex from '@/components/Vuex.vue';
 import Default from '@/layouts/default.vue';
+import Error from '@/components/Error.vue'
+
 
 const breeds = ref<any | null>([])
 const loading = ref<boolean>(false)
   const search = ref<string>('')
+  const error = ref<boolean>(false)
 
 
-  console.log(search)
+  watchEffect(() => {
+    console.log(search)
+  })
+
+
+
+    
+
 
 onMounted(() => {
   const fetchBreeds = async() => {
-    loading.value = true
+    try {
+      loading.value = true
     const response = await axios.get('https://dog.ceo/api/breeds/list/all')
     console.log(response.data.message.length)
     loading.value = false
     breeds.value = (Object.keys(response.data.message))
+    } catch (e) {
+      loading.value = false
+      error.value = true
+    }
+   
     
   }
   fetchBreeds()
@@ -41,23 +57,24 @@ const searchedBreed = computed(() => {
   <div class="min-h-screen w-full   text-2xl">
     <Default>
 
-    <h1>Vue 3 + tailwind</h1>
+   
 
 <!-- <Vuex /> -->
 
-    <!-- <input type="text" v-model="search" placeholder="search..."  /> -->
+    <input type="text" v-model="search" placeholder="search..."  />
 
-    <div  class="flex gap-2 w-full justify-center px-6">
-      <div class="flex gap-2 flex-wrap w-full">
+   
+      <div class="flex  gap-1 flex-wrap w-full">
         <!-- <Suspense> -->
           <BreedCard v-for="breed in breeds" :breed="breed" />
         <!-- </Suspense> -->
         
-      </div>
+      
       
     </div>
 
     <Loading v-if="loading"/>
+    <Error v-if="error" />
     </Default>
   </div>
   </main>

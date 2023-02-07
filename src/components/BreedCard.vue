@@ -1,7 +1,8 @@
 <template>
-    <div class="breedCard">
+    <div class="breedCard ">
+        <RouterLink :to="('breed/' + breed)">
         <img :src="dogImage"  v-if="!imageLoad"/>
-
+</RouterLink>
         <div class="lazy-loader" v-if="imageLoad">
 
         </div>
@@ -80,8 +81,8 @@ router.push({name:'breed-name',params:breed})
 img{
     border-radius: 12px;
     object-fit: cover;
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
 }
 
 .breedCard{

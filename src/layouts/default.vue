@@ -1,6 +1,9 @@
 <template>
-    <div class="w-11/12 lg:max-w-[112rem]  flex flex-col items-center mx-auto border-2 border-[red]">
-        <slot/>
+    <div class="w-full  lg:max-w-[112rem]  flex flex-col mx-auto ">
+        <div class="w-11/12 mx-auto ">
+            <slot/>
+        </div>
+      
     </div>
 </template>
 
