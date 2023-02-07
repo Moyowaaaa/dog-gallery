@@ -4,7 +4,7 @@
         <Loading v-if="loading" />
 
         <div class="h-screen w-full bg-black text-white p-10" v-if="!loading">
-            <div class="flex gap-2 items-center text-xl" @click="router.back()">
+            <div class="link flex gap-2 items-center text-xl w-max" @click="router.back()">
             &larr;
             <p>Back</p>
         </div>

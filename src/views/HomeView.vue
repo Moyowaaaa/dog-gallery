@@ -22,7 +22,10 @@ const loading = ref<boolean>(false)
 
 
 
-    
+    // onMounted(() => {
+    //   store.dispatch('fetchBreeds')
+    //   console.log(store.getters.breeds)
+    // })
 
 
 onMounted(() => {
@@ -59,15 +62,18 @@ const searchedBreed = computed(() => {
 
    
 
-<!-- <Vuex /> -->
+<Vuex /> 
 
-    <input type="text" v-model="search" placeholder="search..."  />
+<div class="w-full flex py-6 items-center justify-center ">
+  <input type="text" v-model="search" placeholder="search..."  class="p-2" />
+</div>
+   
 
    
-      <div class="flex  gap-1 flex-wrap w-full">
-        <!-- <Suspense> -->
+      <div class="flex flex-col lg:flex-row gap-1 flex-wrap w-full">
+      
           <BreedCard v-for="breed in breeds" :breed="breed" />
-        <!-- </Suspense> -->
+       
         
       
       
