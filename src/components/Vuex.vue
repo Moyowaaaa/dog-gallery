@@ -27,6 +27,7 @@ import { mapState } from 'vuex'
 const increase = () => {
   store.commit('increment')
   console.log(store.state.count)
+  console.log(store.state.dogs)
 }
 
 const increasee = () => {

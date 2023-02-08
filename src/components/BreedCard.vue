@@ -1,12 +1,22 @@
 <template>
-    <div class="breedCard ">
-        <RouterLink :to="('breed/' + breed)">
+       
+    <div class="breedCard w-full lg:w-3/12 shadow-md pb-10 lg:pb-0 h-[450px] flex flex-col lg:flex-row items-center px-2 gap-2 hover:shadow-2xl cursor-pointer" @click="viewBreedDetails(breed)">
+        <div class="h-[400px] w-[300px] ">
+            <img :src="breed"  v-if="!imageLoad"/>
+        </div>
+
+        <!-- <div>
+            {{ breed }}
+        </div> -->
+        
+        <!-- <RouterLink :to="('breed/' + breed)">
         <img :src="dogImage"  v-if="!imageLoad"/>
 </RouterLink>
         <div class="lazy-loader" v-if="imageLoad">
 
-        </div>
+        </div> -->
     </div>
+   
 
     <!-- <div class="h-auto w-auto">
 <RouterLink :to="('breed/' + breed)">
@@ -34,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import store from '@/store';
 import axios from 'axios';
 import { onMounted,ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
@@ -45,6 +56,7 @@ const router = useRouter()
 const props = defineProps(['breed'])
 const dogImage = ref<string>('')
 const imageLoad = ref<boolean>(true)
+
 
 watchEffect(async() => {
     const response = await axios.get(`https://dog.ceo/api/breed/${props.breed}/images/random`)
@@ -67,6 +79,8 @@ const display = () => {
 const viewBreedDetails = (breed:any) => {
 router.push({name:'breed-name',params:breed})
 }
+
+// <RouterLink :to="('breed/' + breed)">
 
 </script>
 

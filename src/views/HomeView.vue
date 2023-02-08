@@ -8,49 +8,49 @@ import store from '@/store';
 import Vuex from '@/components/Vuex.vue';
 import Default from '@/layouts/default.vue';
 import Error from '@/components/Error.vue'
+import BreedModal from '@/components/BreedModal.vue';
+import ImageTile from '../components/ImageTile.vue'
 
-
-const breeds = ref<any | null>([])
-const loading = ref<boolean>(false)
+const dogImages = ref<any | null>(store.getters.AllBreeds)
+const loading = ref<boolean>(true)
   const search = ref<string>('')
   const error = ref<boolean>(false)
 
 
-  watchEffect(() => {
-    console.log(search)
-  })
+  // console.log('casches', breeds.value)
+  // console.log(breeds.value.length === 0 )
 
+// onMounted(async() => {
+//   try {
+//     const responsefirst:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
+//     const responseSecond:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
+//      dogImages.value = [...responsefirst.data.message,...responseSecond.data.message]
+//     // console.log(("/")[4];)
+//   } catch (error) {
+//     console.log(error) 
+//   }
+// })
 
+// onMounted(async() => {
+//   await store.dispatch('fetchAllBreeds')
+//   console.log(store.getters.AllBreeds)
 
-    // onMounted(() => {
-    //   store.dispatch('fetchBreeds')
-    //   console.log(store.getters.breeds)
-    // })
+// })
 
+const fetchImages = async() => {
+  await store.dispatch('fetchAllBreeds')
+}
 
-onMounted(() => {
-  const fetchBreeds = async() => {
-    try {
-      loading.value = true
-    const response = await axios.get('https://dog.ceo/api/breeds/list/all')
-    console.log(response.data.message.length)
+watchEffect(async() => {
+  if(dogImages.value.length === 0){
+    await store.dispatch('fetchAllBreeds')
+    dogImages.value = store.state.dogs
     loading.value = false
-    breeds.value = (Object.keys(response.data.message))
-    } catch (e) {
-      loading.value = false
-      error.value = true
-    }
-   
-    
   }
-  fetchBreeds()
+  loading.value = false
+  return dogImages
 })
 
-const searchedBreed = computed(() => {
-  return breeds.value.filter((breed:any) => {
-    return breed.toLowerCase().includes(search.value.toLowerCase())
-  })
-})
 
 
 </script>
@@ -60,27 +60,21 @@ const searchedBreed = computed(() => {
   <div class="min-h-screen w-full   text-2xl">
     <Default>
 
-   
-
-<Vuex /> 
-
-<div class="w-full flex py-6 items-center justify-center ">
-  <input type="text" v-model="search" placeholder="search..."  class="p-2" />
-</div>
-   
-
-   
-      <div class="flex flex-col lg:flex-row gap-1 flex-wrap w-full">
-      
-          <BreedCard v-for="breed in breeds" :breed="breed" />
-       
-        
-      
-      
-    </div>
-
     <Loading v-if="loading"/>
     <Error v-if="error" />
+
+    <div class="flex flex-wrap justify-center w-full  py-10">
+      <div class="w-11/12 justify-center  flex flex-wrap gap-2">
+        <ImageTile v-for="dogImage in dogImages" :dogImage="dogImage"/>
+
+      </div>
+
+      <!-- <ImageTile v-for="dogImage in dogImages" :dogImage="dogImage"/> -->
+
+
+    </div>
+      
+    
     </Default>
   </div>
   </main>

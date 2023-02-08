@@ -1,15 +1,17 @@
 import axios from 'axios'
-
-export default {
-    async fetchBreeds(context:any) {
-        try {
-            let allBreeds = [];
-            const response = await axios.get('https://dog.ceo/api/breeds/list/all')
-            // const result1 = response.data.message;
-            allBreeds = (Object.keys(response.data.message))
-            context.commit("getAllBreeds",allBreeds)
+const actions = {
+    async fetchAllBreeds(context:any){
+        try { 
+            const responsefirst:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
+            const responseSecond:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
+            const images= [...responsefirst.data.message, ...responseSecond.data.message]
+            context.commit("allBreeds",images)
         } catch (error) {
-            console.log(error)
+            throw Error
         }
     }
 }
+
+
+
+export default actions
