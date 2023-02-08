@@ -1,23 +1,32 @@
 import { createStore } from "vuex";
 import axios from "axios";
 
-import mutations from "./mutations";
-import getters from "./getters";
-import actions from "./actions";
-import Breeds from "./modules/Breeds";
-
-
-export const store = createStore({
+const store = createStore({
     state ():any {
       return {
         dogs:[],
-        searchedItem:[]
-        
       }
     },
-    getters,
-    mutations,
-    actions
+    mutations: {
+        allBreeds(state:any,payload:any){
+            state.dogs = payload
+          },
+    }, getters:{
+        AllBreeds(state:any) {
+            return state.dogs
+        }
+    }, actions:  {
+        async fetchAllBreeds(context:any){
+            try { 
+                const responsefirst:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
+                const responseSecond:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
+                const images= [...responsefirst.data.message, ...responseSecond.data.message]
+                context.commit("allBreeds",images)
+            } catch (error) {
+                console.log(error)
+            }
+        },
+    }
   })
 
 
