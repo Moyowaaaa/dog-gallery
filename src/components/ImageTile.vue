@@ -1,5 +1,5 @@
 <template>
-    <div class="tile w-3/12   h-[15rem]" @click="viewBreedDetails(breedname)">
+    <div class="tile w-full lg:w-3/12 hover:shadow-2xl  h-[15rem]" @click="viewBreedDetails(breedname)">
         <img :src="dogImage" alt="">
 
     </div>

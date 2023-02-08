@@ -17,29 +17,6 @@ const loading = ref<boolean>(true)
   const error = ref<boolean>(false)
 
 
-  // console.log('casches', breeds.value)
-  // console.log(breeds.value.length === 0 )
-
-// onMounted(async() => {
-//   try {
-//     const responsefirst:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
-//     const responseSecond:any = await axios.get('https://dog.ceo/api/breeds/image/random/50')
-//      dogImages.value = [...responsefirst.data.message,...responseSecond.data.message]
-//     // console.log(("/")[4];)
-//   } catch (error) {
-//     console.log(error) 
-//   }
-// })
-
-// onMounted(async() => {
-//   await store.dispatch('fetchAllBreeds')
-//   console.log(store.getters.AllBreeds)
-
-// })
-
-const fetchImages = async() => {
-  await store.dispatch('fetchAllBreeds')
-}
 
 watchEffect(async() => {
   if(dogImages.value.length === 0){
@@ -64,7 +41,7 @@ watchEffect(async() => {
     <Error v-if="error" />
 
     <div class="flex flex-wrap justify-center w-full  py-10">
-      <div class="w-11/12 justify-center  flex flex-wrap gap-2">
+      <div class="w-full lg:w-11/12 justify-center  flex flex-col lg:flex-row flex-wrap gap-2">
         <ImageTile v-for="dogImage in dogImages" :dogImage="dogImage"/>
 
       </div>
