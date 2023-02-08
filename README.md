@@ -2,17 +2,19 @@
 
 ## Demo
 
-[View Live Site](https://prime-journal-assesment-moyowa.vercel.app/)
+[View Live Site](https://eden-life-assement-moyowa.netlify.app/)
 
 This project was bootstrapped with [Vite my-vue-app --template vue-ts]( [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## TODO
 
-+ ##### Implement some functional logic such viewing details of different characters on the TVshow; Rick and Morty, details such name,status, species and type...
++ ##### Implement some functional logic such searching, and redirection to a page that contains details of the selected breed, details suce as breed name, available sub breeds and images of the selected breed
 
-+ ##### Consume a dummy API through its endpoints: 
-  + [All Characters](https://rickandmortyapi.com/api/character/)
-  + [Characters By pages](https://rickandmortyapi.com/api/character/?page=${page})
++ ##### Consume a dummy API that contains various breeds and thier images through its endpoints: 
+  + [All Breeds](https://dog.ceo/api/breeds/list/all)
+  + [Random Breed Images](https://dog.ceo/api/breeds/image/random/{count})
+  + [SingleBreedImages](https://dog.ceo/api/breed/{breed-name}/images/random/{number-of-images-available})
+
 
 
 ## Features 
@@ -30,9 +32,9 @@ This project was bootstrapped with [Vite my-vue-app --template vue-ts]( [Vite Co
 The technologies I used to achieve my solution are:
 + Vue.js
 + TypeScript
-+ Tailwind CSS
-+ Vuex
-+ Axios
++ Tailwind CSS and CSS
++ Vuex for state management
++ Axios for data fetching
 + Netlify for web hosting
 
 

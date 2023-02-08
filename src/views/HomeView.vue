@@ -15,18 +15,24 @@ const dogImages = ref<any | null>(store.getters.AllBreeds)
 const loading = ref<boolean>(true)
   const search = ref<string>('')
   const error = ref<boolean>(false)
-
+  const imageLoad = ref<boolean>(true)
 
 
 watchEffect(async() => {
   if(dogImages.value.length === 0){
     await store.dispatch('fetchAllBreeds')
     dogImages.value = store.state.dogs
-    loading.value = false
+    loading.value = false,
+    imageLoad.value = false
   }
   loading.value = false
   return dogImages
 })
+
+console.log(dogImages.value.forEach((dogImage:any) => {
+  return dogImage
+}))
+
 
 
 
@@ -43,12 +49,10 @@ watchEffect(async() => {
     <div class="flex flex-wrap justify-center w-full  py-10">
       <div class="w-full lg:w-11/12 justify-center  flex flex-col lg:flex-row flex-wrap gap-2">
         <ImageTile v-for="dogImage in dogImages" :dogImage="dogImage"/>
-
+        
       </div>
 
-      <!-- <ImageTile v-for="dogImage in dogImages" :dogImage="dogImage"/> -->
-
-
+     
     </div>
       
     

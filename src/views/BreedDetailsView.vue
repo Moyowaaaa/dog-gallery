@@ -36,7 +36,7 @@ import { onMounted,ref } from 'vue';
 import ImageCard from '../components/ImageCard.vue'
 import Loading from '@/components/Loading.vue';
 import BreedEmptyState from '@/components/BreedEmptyState.vue';
-import type defaultVue from '@/layouts/default.vue';
+import  defaultVue from '@/layouts/default.vue';
 
 const route = useRoute();
 const router = useRouter();

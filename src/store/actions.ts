@@ -7,8 +7,11 @@ const actions = {
             const images= [...responsefirst.data.message, ...responseSecond.data.message]
             context.commit("allBreeds",images)
         } catch (error) {
-            throw Error
+            console.log(error)
         }
+    },
+    SearchBreeds(context:any,payload:any){
+    context.commit('search',payload)
     }
 }
 

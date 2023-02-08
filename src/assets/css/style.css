@@ -28,3 +28,28 @@
     color:#02886B
   }
   
+
+  .lazy-loader {
+    border-radius: 12px;
+    height: 300px;
+    width: 300px;
+    background: linear-gradient(90deg, #929292 20%, #ffffff);
+    background-size: 300%;
+    animation: loader 1s linear 2s infinite alternate;
+  }
+  .lazy-container-info {
+    border-radius: 12px;
+    height: 20px;
+    width: 250px;
+    background: linear-gradient(90deg, black 20%, #ffffff);
+    background-size: 300%;
+    animation: loader 1s linear 2s infinite alternate;
+  }
+  @keyframes loader {
+    0% {
+      background-position: 300% 0%;
+    }
+    100% {
+      background-position: 350% 0%;
+    }
+  }

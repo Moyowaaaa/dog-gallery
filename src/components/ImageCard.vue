@@ -1,7 +1,7 @@
 <template>
-    <div class="h-[20rem] w-[20rem] border-2 flex w-full ">
-        <img :src="breedImage" />
-        <div class="lazy-loader" v-if="imageLoad"></div>
+    <div class="h-[20rem] w-auto border-2 flex  flex justify-center my-2">
+        <img :src="breedImage" v-if="breedImage"/>
+        <div class="lazy-loader" v-if="!breedImage"></div>
     </div>
 </template>
 

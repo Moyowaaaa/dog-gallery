@@ -6,10 +6,12 @@ import getters from "./getters";
 import actions from "./actions";
 import Breeds from "./modules/Breeds";
 
+
 export const store = createStore({
     state ():any {
       return {
         dogs:[],
+        searchedItem:[]
         
       }
     },

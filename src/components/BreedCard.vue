@@ -1,7 +1,7 @@
 <template>
        
-    <div class="breedCard w-full lg:w-3/12 shadow-md pb-10 lg:pb-0 h-[450px] flex flex-col lg:flex-row items-center px-2 gap-2 hover:shadow-2xl cursor-pointer" @click="viewBreedDetails(breed)">
-        <div class="h-[400px] w-[300px] ">
+    <div class="breedCard w-full lg:w-3/12 shadow-md pb-10 lg:pb-0 h-[15rem] flex flex-col lg:flex-row items-center px-2 gap-2 hover:shadow-2xl cursor-pointer" @click="viewBreedDetails(breed)">
+        <div class="h-full w-full">
             <img :src="breed"  v-if="!imageLoad"/>
         </div>
 
@@ -94,9 +94,9 @@ router.push({name:'breed-name',params:breed})
 }
 img{
     border-radius: 12px;
-    object-fit: cover;
-    height: 400px;
-    width: 400px;
+    object-fit: fit;
+    height: 100%;
+    width: 100%;
 }
 
 .breedCard{
