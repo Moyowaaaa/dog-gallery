@@ -6,24 +6,7 @@
 
 This project was bootstrapped with [Vite my-vue-app --template vue-ts]( [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Task List
 
-- [*] ##### Implement some functional logic such searching, and redirection to a page that contains details of the selected breed, details such as breed name and more images of the selected breed
-
-- [*] ##### Consume a dummy API that contains various breeds and thier images through its endpoints: 
-  + [All Breeds](https://dog.ceo/api/breeds/list/all)
-  + [Random Breed Images](https://dog.ceo/api/breeds/image/random/{count})
-  + [SingleBreedImages](https://dog.ceo/api/breed/{breed-name}/images/random/{number-of-images-available})
-
-- [*] implement state management system (VUEX)
-
-- [*] Client Side data caching 
-
-- [*] Mobile responsive
-
-- [ ] code cleanup and refractoring
-
-- [ ] update documentation
 
 ## Features 
 
@@ -44,6 +27,27 @@ The technologies I used to achieve my solution are:
 + Vuex for state management
 + Axios for data fetching
 + Netlify for web hosting
+
+
+
+## Task List
+
+- [*] ##### Implement some functional logic such searching, and redirection to a page that contains details of the selected breed, details such as breed name and more images of the selected breed
+
+- [*] ##### Consume a dummy API that contains various breeds and thier images through its endpoints: 
+  + [All Breeds](https://dog.ceo/api/breeds/list/all)
+  + [Random Breed Images](https://dog.ceo/api/breeds/image/random/{count})
+  + [SingleBreedImages](https://dog.ceo/api/breed/{breed-name}/images/random/{number-of-images-available})
+
+- [*] implement state management system (VUEX)
+
+- [*] Client Side data caching 
+
+- [*] Mobile responsive
+
+- [*] code cleanup and refractoring
+
+- [*] update documentation
 
 
 ## Installation
