@@ -1,20 +1,27 @@
 import { createStore } from "vuex";
 import axios from "axios";
 
+type state = {
+    dogs:string[],
+    search:any
+}
+
 const store = createStore({
-    state ():any {
+    state ():state {
       return {
         dogs:[],
+        search:''
       }
     },
     mutations: {
-        allBreeds(state:any,payload:any){
+        allBreeds(state:state,payload:string[]):void{
             state.dogs = payload
           },
     }, getters:{
-        AllBreeds(state:any) {
+        AllBreeds(state:state):string[] {
             return state.dogs
-        }
+        },
+
     }, actions:  {
         async fetchAllBreeds(context:any){
             try { 

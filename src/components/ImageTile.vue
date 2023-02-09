@@ -1,7 +1,7 @@
 <template>
     <div class="tile w-full lg:w-3/12 hover:shadow-2xl  h-[15rem]" @click="viewBreedDetails(breedname)">
         <div class="w-full h-full">
-            <img :src="dogImage" :alt="`Image of a ${breedname}` " v-if="!imageLoad">
+            <img :src="dogImage" :alt="`Image of a ${breedname}` " v-if="!imageLoad" v-lazy="dogImage">
         </div>
 
         <div class="lazy-loader border-2 border-[red] h-full w-full" v-if="imageLoad"></div>
