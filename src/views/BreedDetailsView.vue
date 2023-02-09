@@ -11,7 +11,7 @@
         </div>
 
         <div class="w-full ">
- <h1 class="py-6 text-5xl underline">{{ route.params.name }}</h1>
+ <h1 class="py-6 text-5xl underline">{{ NameOfBreed }}</h1>
 
  <div class="flex flex-col lg:flex-row pt-24 w-full items-center">
     <ImageCard v-for="breedImage in breedImages" :breedImage="breedImage" :imageLoad="imageLoad"/>
@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
-import { onMounted,ref } from 'vue';
+import { onMounted,ref, computed } from 'vue';
 import ImageCard from '../components/ImageCard.vue'
 import Loading from '@/components/Loading.vue';
 import BreedEmptyState from '@/components/BreedEmptyState.vue';
@@ -44,9 +44,10 @@ const router = useRouter();
 
 const loading = ref<boolean>(true)
 const breedImages= ref<string[]>([])
-    const imageLoad = ref<boolean>(true)
+const imageLoad = ref<boolean>(true)
+let breedName = ref(typeof route.params.name === 'string' ? route.params.name : '')
 
-
+    console.log(typeof(route.params.name))
 
 onMounted(async() => {
     const response = await axios.get(`https://dog.ceo/api/breed/${route.params.name}/images/random/5`)
@@ -56,6 +57,12 @@ onMounted(async() => {
     breedImages.value = response.data.message
     
 })
+
+const NameOfBreed = computed(() => {
+      return breedName.value.toLowerCase().replace(/(^\w|\.\w)/g, function(c){  return c.toUpperCase();})
+    });
+
+
 
 
 </script>

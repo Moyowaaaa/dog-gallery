@@ -32,13 +32,13 @@ watchEffect(async() => {
   return dogImages
 })
 
-onMounted(() => {
-  const breedNames = ([...dogImages.value])
+watchEffect(async() => {
+  const breedNames =  ([...dogImages.value])
 console.log({breedNames})
  names.value = breedNames.map((breed) =>{
-  return breed.split("/")[4].includes('pug')
+  return breed.split("/")[4]
 })
-console.log({names})
+console.log(names.value)
 })
 
 
