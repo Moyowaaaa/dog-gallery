@@ -23,7 +23,7 @@ const store = createStore({
                 const images= [...responsefirst.data.message, ...responseSecond.data.message]
                 context.commit("allBreeds",images)
             } catch (error) {
-                console.log(error)
+                return error
             }
         },
     }

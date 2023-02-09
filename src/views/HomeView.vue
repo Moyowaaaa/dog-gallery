@@ -16,6 +16,7 @@ const loading = ref<boolean>(true)
   const search = ref<string>('')
   const error = ref<boolean>(false)
   const imageLoad = ref<boolean>(true)
+  const names = ref<any>('')
 
 
 watchEffect(async() => {
@@ -24,14 +25,25 @@ watchEffect(async() => {
     dogImages.value = store.state.dogs
     loading.value = false,
     imageLoad.value = false
+    
   }
+  
   loading.value = false
   return dogImages
 })
 
-console.log(dogImages.value.forEach((dogImage:any) => {
-  return dogImage
-}))
+onMounted(() => {
+  const breedNames = ([...dogImages.value])
+console.log({breedNames})
+ names.value = breedNames.map((breed) =>{
+  return breed.split("/")[4].includes('pug')
+})
+console.log({names})
+})
+
+
+
+
 
 
 

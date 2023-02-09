@@ -15,6 +15,7 @@
 
  <div class="flex flex-col lg:flex-row pt-24 w-full items-center">
     <ImageCard v-for="breedImage in breedImages" :breedImage="breedImage" :imageLoad="imageLoad"/>
+    <h1 v-if="breedImages && imageLoad">Loading</h1>
 
     <BreedEmptyState v-if="breedImages.length === 0 && !loading"/> 
 

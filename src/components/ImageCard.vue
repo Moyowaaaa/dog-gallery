@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[20rem] w-auto border-2 flex  flex justify-center my-2">
+    <div class="h-[20rem] w-auto flex  flex justify-center my-2">
         <img :src="breedImage" v-if="breedImage"/>
         <div class="lazy-loader" v-if="!breedImage"></div>
     </div>
