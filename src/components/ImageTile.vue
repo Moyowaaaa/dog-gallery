@@ -1,10 +1,14 @@
 <template>
-    <div class="tile w-full lg:w-3/12 hover:shadow-2xl  h-[15rem]" @click="viewBreedDetails(breedname)">
-        <div class="w-full h-full">
+    <div class="tile rounded-b-xl p-2 w-full lg:w-3/12 hover:shadow-2xl  h-[15rem]" @click="viewBreedDetails(breedname)">
+        <div class="w-full h-full" 
+        :class="[searched === `${breedname}` ? 'hidden':'flex flex-col']"
+        
+        >
             <img :src="dogImage" :alt="`Image of a ${breedname}` " v-if="!imageLoad" v-lazy="dogImage">
+            <div class="lazy-loader border-2 border-[red] h-full w-full" v-if="imageLoad"></div>
         </div>
 
-        <div class="lazy-loader border-2 border-[red] h-full w-full" v-if="imageLoad"></div>
+       
 </div>
     
 </template>
@@ -19,19 +23,17 @@ const imageLoad = ref<boolean>(true)
 
 
 type Image = {
-    dogImage:string
+    dogImage:string,
+    searched:any
 }
 
 
 const props = defineProps<Image>()
 const breedname = (props.dogImage.split("/")[4])
 
-
-
 const viewBreedDetails = (name:string):void => {
     router.push({name:'breed-name', params: {name} })
 }
-
 watchEffect(async() => {
 if(props.dogImage){
     imageLoad.value = false
@@ -39,6 +41,7 @@ if(props.dogImage){
     imageLoad.value = true
 }
 })
+
 
 </script>
 

@@ -27,7 +27,7 @@
             <h1 v-if="breedImages && imageLoad">Loading</h1>
 
             <ImageCard
-            v-lazy="breedImage"
+              v-lazy="breedImage"
               v-for="breedImage in breedImages"
               :breedImage="breedImage"
               :imageLoad="imageLoad"
@@ -63,7 +63,6 @@ onMounted(async () => {
   const response = await axios.get(
     `https://dog.ceo/api/breed/${route.params.name}/images/random/5`
   );
-  console.log(response.data.message);
   imageLoad.value = false;
   loading.value = false;
   breedImages.value = response.data.message;
