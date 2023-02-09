@@ -57,16 +57,13 @@ const searchBreed = computed(() => {
           </div>
         </div>
 
-        <div
+      
+      </Default>
+      <div
           class="w-full h-full flex items-center justify-center"
           v-if="searchBreed.length === 0"
-        >
-          <h1>
-            <span class="font-medium">{{ search }}</span> wasn't found, please
-            search for something else
-          </h1>
+        >not found
         </div>
-      </Default>
     </div>
   </main>
 </template>
