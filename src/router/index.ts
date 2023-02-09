@@ -18,6 +18,11 @@ const router = createRouter({
       component: () => import('../views/BreedDetailsView.vue')
     },
     {
+      path: '/:pathMatch(.*)*',
+      name: 'error',
+      component: () => import('../views/Error404.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

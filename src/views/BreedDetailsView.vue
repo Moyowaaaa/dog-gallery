@@ -13,9 +13,18 @@
         <div class="w-full ">
  <h1 class="py-6 text-5xl underline">{{ NameOfBreed }}</h1>
 
+ <div class="w-[20rem] mt-4 absolute flex gap-2 text-4xl" v-if="breedImages.length">
+
+    {{ breedImages.length }} <p>Image<span v-if="breedImages.length > 1">s</span></p>
+    
+ </div>
+
  <div class="flex flex-col lg:flex-row pt-24 w-full items-center">
-    <ImageCard v-for="breedImage in breedImages" :breedImage="breedImage" :imageLoad="imageLoad"/>
+
     <h1 v-if="breedImages && imageLoad">Loading</h1>
+   
+    <ImageCard v-for="breedImage in breedImages" :breedImage="breedImage" :imageLoad="imageLoad"/>
+   
 
     <BreedEmptyState v-if="breedImages.length === 0 && !loading"/> 
 
@@ -45,9 +54,8 @@ const router = useRouter();
 const loading = ref<boolean>(true)
 const breedImages= ref<string[]>([])
 const imageLoad = ref<boolean>(true)
-let breedName = ref(typeof route.params.name === 'string' ? route.params.name : '')
+let breedName = ref<string>(typeof route.params.name === 'string' ? route.params.name : '')
 
-    console.log(typeof(route.params.name))
 
 onMounted(async() => {
     const response = await axios.get(`https://dog.ceo/api/breed/${route.params.name}/images/random/5`)
@@ -59,7 +67,7 @@ onMounted(async() => {
 })
 
 const NameOfBreed = computed(() => {
-      return breedName.value.toLowerCase().replace(/(^\w|\.\w)/g, function(c){  return c.toUpperCase();})
+      return breedName.value.toLowerCase().replace(/(^\w|\.\w)/g, function(name){return name.toUpperCase();})
     });
 
 

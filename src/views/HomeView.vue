@@ -25,9 +25,7 @@ watchEffect(async() => {
     dogImages.value = store.state.dogs
     loading.value = false,
     imageLoad.value = false
-    
   }
-  
   loading.value = false
   return dogImages
 })
@@ -52,6 +50,7 @@ console.log(names.value)
 
 <template>
   <main>
+    <h1 class="py-6 text-3xl text-center underline">Dog Gallery</h1>
   <div class="min-h-screen w-full   text-2xl">
     <Default>
 
@@ -60,6 +59,7 @@ console.log(names.value)
 
     <div class="flex flex-wrap justify-center w-full  py-10">
       <div class="w-full lg:w-11/12 justify-center  flex flex-col lg:flex-row flex-wrap gap-2">
+       
         <ImageTile v-for="dogImage in dogImages" :dogImage="dogImage"/>
         
       </div>

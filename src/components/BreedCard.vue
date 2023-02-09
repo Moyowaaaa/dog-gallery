@@ -60,7 +60,6 @@ const imageLoad = ref<boolean>(true)
 
 watchEffect(async() => {
     const response = await axios.get(`https://dog.ceo/api/breed/${props.breed}/images/random`)
-    console.log(response.data)
     dogImage.value = response.data.message
     imageLoad.value = false
 })
