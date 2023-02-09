@@ -10,7 +10,7 @@ This project was bootstrapped with [Vite my-vue-app --template vue-ts]( [Vite Co
 
 ## Features 
 
-+ Dashboard that displays various breeds or dogs along with thier details (name,images and sub breeds)
++ Dashboard that displays various breeds or dogs along with thier details 
 
 + Image Gallery that contains more images of each dog breeds
 
