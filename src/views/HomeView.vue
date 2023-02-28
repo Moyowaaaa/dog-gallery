@@ -60,8 +60,8 @@ const searchBreed = computed(() => {
       
       </Default>
       <div
-          class="w-full h-full flex items-center justify-center"
-          v-if="searchBreed.length === 0"
+          class=" flex items-center justify-center"
+          v-if="searchBreed && searchBreed.length === 0"
         >not found
         </div>
     </div>
